@@ -14,18 +14,24 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
+var wizards = [];
+
 var arrayRandElement = function (arr) {
   var rand = Math.floor(Math.random() * arr.length);
   return arr[rand];
 };
 
-var wizards = [];
-for (var j = 0; j < 4; j++) {
-  wizards[j] = {
+var createWizard = function (element) {
+  element = {
     name: arrayRandElement(NAME_LIST) + ' ' + arrayRandElement(SURNAME_LIST),
     coatColor: arrayRandElement(COAT_COLOR_LIST),
     eyesColor: arrayRandElement(EYES_COLOR_LIST)
   };
+  return element;
+};
+
+for (var j = 0; j < 4; j++) {
+  wizards[j] = createWizard(wizards[j]);
 }
 
 var renderWizard = function (wizard) {
